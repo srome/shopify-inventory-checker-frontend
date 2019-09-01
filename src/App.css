@@ -1,16 +1,15 @@
-body {
-  padding: 1em;
-}
-
 .logoContainer {
+  position: sticky;
+  top: 0;
+  background: white;
   text-align: center;
-  margin: 1em 0;
 }
 
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
+  padding: 0 1em 1em 1em;
 }
 
 .soldOut {
