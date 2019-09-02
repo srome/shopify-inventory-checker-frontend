@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import ProductGrid from "./ProductGrid";
 import "./App.css";
 
-const App = ({ apiUrl, logoUrl, shopName }) => (
+const App = ({ apiUrl, logoUrl, shopName, showImages }) => (
   <>
     <Helmet>
       <title>{`${shopName} Inventory`}</title>
@@ -16,7 +16,11 @@ const App = ({ apiUrl, logoUrl, shopName }) => (
           <h2>{shopName}</h2>
         )}
       </div>
-      <ProductGrid apiUrl={apiUrl} shopName={shopName} />
+      <ProductGrid
+        apiUrl={apiUrl}
+        shopName={shopName}
+        showImages={showImages}
+      />
     </div>
   </>
 );

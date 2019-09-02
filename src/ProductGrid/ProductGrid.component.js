@@ -14,11 +14,14 @@ const SoldOut = ({ shopName }) => (
   </div>
 );
 
-const ProductGrid = ({ data = [], shopName }) => (
+const ProductGrid = ({ data = [], shopName, showImages }) => (
   <div className="productGrid">
     {data.length ? (
       data.map(({ location, productName, quantity, image }, index) => (
         <div className="productCard" key={index}>
+          {showImages && image && (
+            <img className="image" src={image} alt={productName} />
+          )}
           <div className="productDetails">
             <h3>{productName}</h3>
             <div>{location}</div>
