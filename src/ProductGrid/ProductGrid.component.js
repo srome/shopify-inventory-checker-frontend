@@ -19,7 +19,6 @@ const ProductGrid = ({ data = [], shopName }) => (
     {data.length ? (
       data.map(({ location, productName, quantity, image }, index) => (
         <div className="productCard" key={index}>
-          {image && <img className="image" src={image} alt={productName} />}
           <div className="productDetails">
             <h3>{productName}</h3>
             <div>{location}</div>
