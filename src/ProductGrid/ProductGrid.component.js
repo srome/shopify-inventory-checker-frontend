@@ -14,18 +14,19 @@ const SoldOut = ({ shopName }) => (
   </div>
 );
 
-const ProductGrid = ({ data = [], shopName, showImages }) => (
+const ProductGrid = ({ data = {}, shopName }) => (
   <div className="productGrid">
-    {data.length ? (
-      data.map(({ location, productName, quantity, image }, index) => (
-        <div className="productCard" key={index}>
-          {showImages && image && (
-            <img className="image" src={image} alt={productName} />
-          )}
+    {Object.entries(data).length ? (
+      Object.entries(data).map(([location, products]) => (
+        <div className="productCard" key={location}>
           <div className="productDetails">
-            <h3>{productName}</h3>
-            <div>{location}</div>
-            <Quantity quantity={quantity} />
+            <h3>{location}</h3>
+            {products.map(({ productName, quantity }) => (
+              <div className="productListing">
+                <div>{productName}</div>
+                <Quantity quantity={quantity} />
+              </div>
+            ))}
           </div>
         </div>
       ))

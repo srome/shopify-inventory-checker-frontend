@@ -21,10 +21,21 @@
   border: 1px solid #ccc;
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
   background-color: white;
+  max-width: 400px;
 }
 
 .productDetails {
   padding: 1em;
+}
+
+.productListing {
+  display: flex;
+  justify-content: space-between;
+  padding: .25em;
+}
+
+.productListing:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .image {
@@ -33,9 +44,6 @@
 }
 
 .quantity {
-  text-align: right;
-  border-top: 1px solid #ccc;
-  margin-top: 10px;
   color: palevioletred;
 }
 
