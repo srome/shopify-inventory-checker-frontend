@@ -4,7 +4,7 @@ const Quantity = ({ quantity }) =>
   quantity >= 6 ? (
     <div className="quantity inStock">In Stock</div>
   ) : (
-    <div className="quantity">{quantity}</div>
+    <div className="quantity">{`${quantity} Available`}</div>
   );
 
 const SoldOut = ({ shopName }) => (
