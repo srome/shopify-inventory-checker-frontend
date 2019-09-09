@@ -6,6 +6,23 @@
   text-align: center;
 }
 
+.backLink {
+  position: absolute;
+  float: left;
+  padding-left: 1em;
+  font-size: .75em;
+}
+
+.backLink a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.backLink~.logo {
+  margin-top: 1em;
+}
+
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
