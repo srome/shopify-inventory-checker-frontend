@@ -5,7 +5,7 @@ const Quantity = ({ quantity }) =>
     <div className="quantity inStock">In Stock</div>
   ) : (
     <div className="quantity">
-      {quantity === 0 ? "Sold Out" : `${quantity} Available`}
+      {quantity <= 0 ? "Sold Out" : `${quantity} Available`}
     </div>
   );
 
