@@ -53,15 +53,19 @@
 
 .productDescription {
   max-width: 80%;
-  padding: .25em .25em .25em 1.5em;
+  padding: .25em .25em .25em 1.75em;
 }
 
 .expander {
   cursor: pointer;
-  padding-right: .25em;
+  padding-right: .5em;
 }
 
-.productListing:nth-child(odd) {
+.productListing {
+  padding: .75em .25em;
+}
+
+.productListing:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
