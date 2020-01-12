@@ -1,13 +1,5 @@
 import React from "react";
-
-const Quantity = ({ quantity }) =>
-  quantity >= 6 ? (
-    <div className="quantity inStock">In Stock</div>
-  ) : (
-    <div className="quantity">
-      {quantity <= 0 ? "Sold Out" : `${quantity} Available`}
-    </div>
-  );
+import ProductListing from "../ProductListing";
 
 const SoldOut = ({ shopName }) => (
   <div className="soldOut">
@@ -23,11 +15,8 @@ const ProductGrid = ({ data = {}, shopName }) => (
         <div className="productCard" key={location}>
           <div className="productDetails">
             <h3>{location}</h3>
-            {products.map(({ productName, quantity }) => (
-              <div className="productListing">
-                <div>{productName}</div>
-                <Quantity quantity={quantity} />
-              </div>
+            {products.map(product => (
+              <ProductListing key={product.productName} product={product} />
             ))}
           </div>
         </div>
