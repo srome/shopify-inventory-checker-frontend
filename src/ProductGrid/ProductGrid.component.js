@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { lighten } from "polished";
 import ProductListing from "../ProductListing";
 
 const StyledSoldOut = styled.div`
@@ -16,7 +17,8 @@ const SoldOut = ({ shopName }) => (
 const ProductCard = styled.div`
   border: 1px solid #ccc;
   box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: ${props => lighten(0.1, props.theme.background)};
+  color: ${props => lighten(0.1, props.theme.text)};
   width: 80%;
 `;
 

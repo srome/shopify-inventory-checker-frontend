@@ -6,7 +6,7 @@ import ProductGrid from "./ProductGrid";
 const LogoContainer = styled.div`
   position: sticky;
   top: 0;
-  background: white;
+  background: ${props => props.theme.background};
   margin: 1em 0;
   text-align: center;
 `;
@@ -17,7 +17,7 @@ const BackLink = styled.div`
   padding-left: 1em;
   font-size: 0.75em;
   & a {
-    color: black;
+    color: ${props => props.theme.text};
     cursor: pointer;
     text-decoration: none;
   }
@@ -40,7 +40,7 @@ const App = ({ apiUrl, backLinkUrl, logoUrl, shopName, showImages }) => (
           <BackLink>
             <a href={backLinkUrl}>
               <span role="img" aria-label="Back">
-                ◀️
+                ◄
               </span>{" "}
               {shopName}
             </a>

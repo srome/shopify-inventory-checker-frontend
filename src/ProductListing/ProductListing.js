@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
+import { darken } from "polished";
 
 const ActualQuantity = styled.div`
   color: palevioletred;
@@ -7,7 +8,7 @@ const ActualQuantity = styled.div`
 `;
 
 const InStock = styled(ActualQuantity)`
-  color: lightslategray;
+  color: ${props => props.theme.text};
 `;
 
 const Quantity = ({ quantity }) =>
@@ -22,7 +23,7 @@ const Quantity = ({ quantity }) =>
 const ProductListing = styled.div`
   padding: 0.75em 0.25em;
   &:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${props => darken(0.1, props.theme.background)};
   }
 `;
 
@@ -34,6 +35,8 @@ const ProductSummary = styled.div`
 
 const Expander = styled.span`
   cursor: pointer;
+  font-family: monospace;
+  font-size: 1.5em;
   padding-right: 0.5em;
 `;
 
@@ -50,7 +53,7 @@ const ProductListingContainer = ({ product }) => {
       <ProductSummary>
         <div>
           <Expander onClick={() => setExpanded(prevExpanded => !prevExpanded)}>
-            {expanded ? "➖" : "➕"}
+            {expanded ? "-" : "+"}
           </Expander>
           {productName}
         </div>

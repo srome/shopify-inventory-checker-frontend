@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createGlobalStyle } from "styled-components/macro";
+import Media from "react-media";
+import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -18,21 +19,34 @@ const GlobalStyle = createGlobalStyle`
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.text}
+}`;
 
-`;
+const dark = {
+  background: "#212224",
+  text: "#CBC8C8"
+};
+const light = {
+  background: "white",
+  text: "black"
+};
 
 ReactDOM.render(
-  <>
-    <GlobalStyle />
-    <App
-      apiUrl={apiUrl}
-      logoUrl={logoUrl}
-      backLinkUrl={backLinkUrl}
-      shopName={shopName}
-      showImages={showImages}
-    />
-  </>,
+  <Media query={{ prefersColorScheme: "dark" }}>
+    {userPrefersDarkTheme => (
+      <ThemeProvider theme={userPrefersDarkTheme ? dark : light}>
+        <GlobalStyle />
+        <App
+          apiUrl={apiUrl}
+          logoUrl={logoUrl}
+          backLinkUrl={backLinkUrl}
+          shopName={shopName}
+          showImages={showImages}
+        />
+      </ThemeProvider>
+    )}
+  </Media>,
   document.getElementById("root")
 );
 
