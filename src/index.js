@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import { createGlobalStyle } from "styled-components/macro";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -10,14 +10,29 @@ const shopName = process.env.REACT_APP_SHOP_NAME;
 const showImages = !(process.env.REACT_APP_SHOW_IMAGES === "false");
 const backLinkUrl = process.env.REACT_APP_BACK_LINK_URL;
 
+const GlobalStyle = createGlobalStyle`
+  body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+`;
+
 ReactDOM.render(
-  <App
-    apiUrl={apiUrl}
-    logoUrl={logoUrl}
-    backLinkUrl={backLinkUrl}
-    shopName={shopName}
-    showImages={showImages}
-  />,
+  <>
+    <GlobalStyle />
+    <App
+      apiUrl={apiUrl}
+      logoUrl={logoUrl}
+      backLinkUrl={backLinkUrl}
+      shopName={shopName}
+      showImages={showImages}
+    />
+  </>,
   document.getElementById("root")
 );
 

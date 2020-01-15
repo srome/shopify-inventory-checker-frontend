@@ -1,31 +1,57 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import styled from "styled-components/macro";
 import ProductGrid from "./ProductGrid";
-import "./App.css";
+
+const LogoContainer = styled.div`
+  position: sticky;
+  top: 0;
+  background: white;
+  margin: 1em 0;
+  text-align: center;
+`;
+
+const BackLink = styled.div`
+  position: absolute;
+  float: left;
+  padding-left: 1em;
+  font-size: 0.75em;
+  & a {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+  }
+`;
+
+const Logo = styled.img`
+  ${BackLink} ~ & {
+    margin-top: 1em;
+  }
+`;
 
 const App = ({ apiUrl, backLinkUrl, logoUrl, shopName, showImages }) => (
   <>
     <Helmet>
       <title>{`${shopName} Inventory`}</title>
     </Helmet>
-    <div className="App">
-      <div className="logoContainer">
+    <div>
+      <LogoContainer>
         {backLinkUrl && (
-          <div className="backLink">
+          <BackLink>
             <a href={backLinkUrl}>
               <span role="img" aria-label="Back">
                 ◀️
               </span>{" "}
               {shopName}
             </a>
-          </div>
+          </BackLink>
         )}
         {logoUrl ? (
-          <img className="logo" src={logoUrl} alt={shopName} title={shopName} />
+          <Logo src={logoUrl} alt={shopName} title={shopName} />
         ) : (
           <h2>{shopName}</h2>
         )}
-      </div>
+      </LogoContainer>
       <ProductGrid
         apiUrl={apiUrl}
         shopName={shopName}
