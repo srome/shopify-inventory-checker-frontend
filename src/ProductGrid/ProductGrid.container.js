@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { logger } from "../logging";
 import ProductGrid from "./ProductGrid.component";
 import Loader from "../Loader";
 
@@ -16,7 +17,7 @@ const ProductGridContainer = ({ apiUrl, ...props }) => {
         setLoading(false);
       })
       .catch(err => {
-        console.error(err);
+        logger.error(err);
         setError(true);
         setLoading(false);
       });

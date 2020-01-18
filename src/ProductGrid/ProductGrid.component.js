@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components/macro";
 import { lighten } from "polished";
+import { logger } from "../logging";
 import ProductListing from "../ProductListing";
 
 const StyledSoldOut = styled.div`
@@ -33,23 +34,32 @@ const StyledProductGrid = styled.div`
   justify-items: center;
 `;
 
-const ProductGrid = ({ data = {}, shopName }) => (
-  <StyledProductGrid>
-    {Object.entries(data).length ? (
-      Object.entries(data).map(([location, products]) => (
-        <ProductCard key={location}>
-          <ProductDetails>
-            <h3>{location}</h3>
-            {products.map(product => (
-              <ProductListing key={product.productName} product={product} />
-            ))}
-          </ProductDetails>
-        </ProductCard>
-      ))
-    ) : (
-      <SoldOut shopName={shopName} />
-    )}
-  </StyledProductGrid>
-);
+const ProductGrid = ({ data = {}, shopName }) => {
+  const inventory = Object.entries(data);
+  useEffect(() => {
+    if (!inventory.length) {
+      logger.info("No inventory returned from api.");
+    }
+  }, [inventory]);
+
+  return (
+    <StyledProductGrid>
+      {inventory.length ? (
+        inventory.map(([location, products]) => (
+          <ProductCard key={location}>
+            <ProductDetails>
+              <h3>{location}</h3>
+              {products.map(product => (
+                <ProductListing key={product.productName} product={product} />
+              ))}
+            </ProductDetails>
+          </ProductCard>
+        ))
+      ) : (
+        <SoldOut shopName={shopName} />
+      )}
+    </StyledProductGrid>
+  );
+};
 
 export default ProductGrid;

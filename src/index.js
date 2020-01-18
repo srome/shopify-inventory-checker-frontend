@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Media from "react-media";
 import { createGlobalStyle, ThemeProvider } from "styled-components/macro";
+import { logger } from "./logging";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -10,6 +11,18 @@ const logoUrl = process.env.REACT_APP_LOGO_URL;
 const shopName = process.env.REACT_APP_SHOP_NAME;
 const showImages = !(process.env.REACT_APP_SHOW_IMAGES === "false");
 const backLinkUrl = process.env.REACT_APP_BACK_LINK_URL;
+
+if (!apiUrl) {
+  logger.error("REACT_APP_API_URL not set");
+}
+
+if (!logoUrl) {
+  logger.error("REACT_APP_LOGO_URL not set");
+}
+
+if (!shopName) {
+  logger.error("REACT_APP_SHOP_NAME not set");
+}
 
 const GlobalStyle = createGlobalStyle`
   body {

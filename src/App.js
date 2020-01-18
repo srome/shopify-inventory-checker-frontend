@@ -32,7 +32,7 @@ const Logo = styled.img`
 const App = ({ apiUrl, backLinkUrl, logoUrl, shopName, showImages }) => (
   <>
     <Helmet>
-      <title>{`${shopName} Inventory`}</title>
+      <title>{`${shopName || "Live"} Inventory`}</title>
     </Helmet>
     <div>
       <LogoContainer>
@@ -42,7 +42,7 @@ const App = ({ apiUrl, backLinkUrl, logoUrl, shopName, showImages }) => (
               <span role="img" aria-label="Back">
                 ◄
               </span>{" "}
-              {shopName}
+              {shopName || "Back to Shop"}
             </a>
           </BackLink>
         )}
