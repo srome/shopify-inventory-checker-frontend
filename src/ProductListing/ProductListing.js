@@ -7,23 +7,16 @@ const ActualQuantity = styled.div`
   white-space: nowrap;
 `;
 
-const InStock = styled(ActualQuantity)`
-  color: ${props => props.theme.text};
-`;
-
-const Quantity = ({ quantity }) =>
-  quantity >= 6 ? (
-    <InStock>In Stock</InStock>
-  ) : (
-    <ActualQuantity>
-      {quantity <= 0 ? "Sold Out" : `${quantity} Available`}
-    </ActualQuantity>
-  );
+const Quantity = ({ quantity }) => (
+  <ActualQuantity>
+    {quantity <= 0 ? "Sold Out" : `${quantity} Available`}
+  </ActualQuantity>
+);
 
 const ProductListing = styled.div`
   padding: 0.75em 0.25em;
   &:nth-child(even) {
-    background-color: ${props => darken(0.1, props.theme.background)};
+    background-color: ${(props) => darken(0.1, props.theme.background)};
   }
 `;
 
@@ -52,7 +45,9 @@ const ProductListingContainer = ({ product }) => {
     <ProductListing>
       <ProductSummary>
         <div>
-          <Expander onClick={() => setExpanded(prevExpanded => !prevExpanded)}>
+          <Expander
+            onClick={() => setExpanded((prevExpanded) => !prevExpanded)}
+          >
             {expanded ? "-" : "+"}
           </Expander>
           {productName}
